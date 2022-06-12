@@ -36,14 +36,15 @@ export default {
       }
     }
   },
+
   methods: {
     // 2. 映射 mutations 中的方法
+    // ...mapMutations(['updateTokenInfo']),this.$store.commit('updateTokenInfo')
     ...mapMutations(['updateTokenInfo']),
     async login() {
-      // console.log('ok')
-      const res = await loginAPI(this.form)
-      console.log(res)
-      if (res.message === 'ok') {
+      const { data: res } = await loginAPI(this.form)
+
+      if (res.message === 'OK') {
         // 3. 把登录成功的结果，存储到 vuex 中
         this.updateTokenInfo(res.data)
         // 4. 登录成功后，跳转到主页

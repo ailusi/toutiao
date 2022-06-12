@@ -12,7 +12,7 @@
       <!-- // 循环渲染频道列表 -->
       <van-tab v-for="item in userChannel" :key="item.id" :title="item.name">
         <!-- 渲染对应文章列表 -->
-        <ArtList :channel-id="item.id"></ArtList>
+        <ArtList :channel-id="item.id" class="list"></ArtList>
       </van-tab>
       <!-- 频道管理的小图标 -->
       <van-icon name="plus" size="16" class="plus" />
@@ -65,5 +65,8 @@ export default {
   top: 58px;
   right: 10px;
   z-index: 999;
+}
+.list {
+  padding-top: 40px;
 }
 </style>

@@ -13,3 +13,14 @@ export const getArtListAPI = (id, time) => {
     }
   })
 }
+export const dislikeArticleAPI = (id) => {
+  return request.post('/v1_0/article/dislikes', {
+    target: id
+  })
+}
+export const reportArticleAPI = (target, type) => {
+  return request.post('/v1_0/article/reports', {
+    target,
+    type
+  })
+}

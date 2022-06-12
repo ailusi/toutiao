@@ -6,7 +6,7 @@ import 'amfe-flexible'
 import Vant, { Lazyload } from 'vant'
 import 'vant/lib/index.css'
 import './index.less'
-import Store from '@/store/index.js'
+import store from './store'
 // 导入 dayjs 的核心模块
 import dayjs from 'dayjs'
 
@@ -35,6 +35,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  Store,
+  store,
   render: (h) => h(App)
 }).$mount('#app')

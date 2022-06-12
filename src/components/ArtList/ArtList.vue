@@ -4,7 +4,7 @@
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false">
         <!-- 渲染文章列表 -->
-        <ArtItem v-for="item in artlist" :key="item.art_id" :article="item"></ArtItem>
+        <ArtItem v-for="item in artlist" :key="item.art_id" :article="item" @remove-article="removeArticle"></ArtItem>
       </van-list>
     </van-pull-refresh>
   </div>
@@ -71,6 +71,16 @@ export default {
     },
     onRefresh() {
       this.initArtList(true)
+    },
+    removeArticle(id) {
+      // 炸楼操作
+      // 对原数组进行filter方法进行过滤
+      this.artlist = this.artlist.filter((item) => item.art_id.toString() !== id)
+      // 判断剩余数据的文章数量是否小于10
+      if (this.artlist.length < 10) {
+        // 主动请求下一页数据
+        this.initArtList()
+      }
     }
   },
   components: {
